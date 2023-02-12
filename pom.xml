@@ -1,0 +1,99 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>SpringMVCWebApplication</groupId>
+  <artifactId>SpringMVCWebApplication</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <release>17</release>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.2.3</version>
+      </plugin>
+    </plugins>
+  </build>
+  
+  <dependencies>
+	  <!--  This dependency provides the core functionality of the Spring framework, including its IoC container.  -->
+	<dependency>
+	  <groupId>org.springframework</groupId>
+	  <artifactId>spring-core</artifactId>
+	  <version>5.3.9</version>
+	</dependency>
+
+	<!--  This dependency provides the context module of the Spring framework, including support for dependency injection, event publishing, and aspect-oriented programming. -->
+  	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-context</artifactId>
+	    <version>5.3.9</version>
+    </dependency>
+	
+	<!--  provides support for building web applications with Spring, including support for HTTP requests and responses, and integration with the Spring IoC container.  -->
+  	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-web</artifactId>
+	    <version>5.3.9</version>
+    </dependency>
+
+	<!--  provides support for building web applications with Spring MVC, including support for handling HTTP requests, rendering views, and managing application flow. -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-webmvc</artifactId>
+	    <version>5.3.9</version>
+    </dependency>
+    
+	<!--  The JdbcTemplate is part of the Spring JDBC module and is used to simplify database access in Spring-based applications. -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-jdbc</artifactId>
+	    <version>5.3.9</version>
+    </dependency>
+
+	<dependency>
+	    <groupId>jakarta.validation</groupId>
+	    <artifactId>jakarta.validation-api</artifactId>
+	    <version>3.0.2</version>
+    </dependency>
+    
+	<dependency>
+	  	<groupId>javax.servlet</groupId>
+	  	<artifactId>jstl</artifactId>
+	  	<version>1.2</version>
+	</dependency>
+	
+	<!-- MySQL Driver -->
+	<dependency>
+	  	<groupId>mysql</groupId>
+	  	<artifactId>mysql-connector-java</artifactId>
+	  	<version>8.0.31</version>
+	</dependency>
+
+	<!-- Appache Commons FileUpload -->
+	<dependency>
+	  <groupId>commons-fileupload</groupId>
+	  <artifactId>commons-fileupload</artifactId>
+	  <version>1.4</version>
+	</dependency>
+	<dependency>
+	  <groupId>commons-io</groupId>
+	  <artifactId>commons-io</artifactId>
+	  <version>2.7</version>
+	</dependency>
+
+	<!-- Logging -->
+	<dependency>
+	  <groupId>commons-logging</groupId>
+	  <artifactId>commons-logging</artifactId>
+	  <version>1.2</version>
+	</dependency>
+
+  </dependencies>
+  
+</project>
