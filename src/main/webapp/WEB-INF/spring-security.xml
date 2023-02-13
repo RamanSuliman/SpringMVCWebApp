@@ -1,0 +1,29 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"  
+    xmlns:beans="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans.xsd  
+    http://www.springframework.org/schema/security  
+    http://www.springframework.org/schema/security/spring-security.xsd">  
+    
+    <!--  The "http" element is used to configure the security settings for HTTP requests.  -->
+    <!--  the "auto-config" attribute is set to "true", which enables Spring Security to automatically apply some default security settings.  -->
+    <http auto-config="true">  
+    	<!-- The "intercept-url" element within the "http" element is used to specify access rules for specific URL patterns. -->
+        <intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')" />  
+        <http-basic/>
+    </http> 
+    
+    <!--  The "authentication-manager" element is used to configure the authentication process. -->
+    <authentication-manager>  
+      <!--   "authentication-provider" element, which specifies the authentication mechanism to use.  -->
+      <authentication-provider>  
+      	<password-encoder hash="bcrypt"/>
+        <!-- "user-service" element is defining, in-memory user service that contains a single user named "admin" with a password of "1234".  -->
+        <user-service>  
+        	<user name="admin" password="$2y$10$wlog1lgmRPtMXOgDvw3iXuurspqNcExOhwC9Kjd0/k0GPoenObrRi" authorities="hasRole(ROLE_ADMIN)" />  
+       		<!-- <user name="admin" password="{bcrypt}$2a$10$dXJ3SW6G7P50lGmMkkmwe.20cQQubK3.HZWzG3YB1tlRy.fqvM/BG" authorities="ROLE_ADMIN" />  -->
+        </user-service>  
+      </authentication-provider>  
+    </authentication-manager>  
+</beans:beans>  
