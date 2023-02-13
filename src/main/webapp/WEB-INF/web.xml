@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ########    This is a configuration file for a Java web application using the Java Servlet API.   ######## -->
+
+<!--  "web-app" root element, which defines the namespace and schema information for the web application. -->
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>SpringMVCWebApplication</display-name>
 
@@ -6,8 +10,10 @@
   <servlet>
   	<servlet-name>spring-dispatcher</servlet-name>
   	<servlet-class>
+  		<!--  is a central servlet that dispatches incoming requests to the appropriate controllers. -->
   		org.springframework.web.servlet.DispatcherServlet
   	</servlet-class>
+  	<!--  specifies that the servlet should be loaded when the web application starts. -->
   	<load-on-startup>1</load-on-startup>
   </servlet>
   
@@ -16,4 +22,32 @@
   	<url-pattern>/</url-pattern>
   </servlet-mapping>
   
+  <!--  A "listener" element is used to configure the Spring ContextLoaderListener, 
+  which is a listener that loads the Spring application context and makes it available to the web application. -->
+  <listener>  
+      <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>  
+  </listener>  
+  
+     
+  <filter>  
+      <filter-name>springSecurityFilterChain</filter-name>  
+      <!--  is a filter that delegates to a bean defined in the Spring application context (spring-security.xml)-->
+      <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>  
+  </filter>  
+  
+  <!-- A "filter-mapping" element is used to map the Spring Security filter chain to all incoming requests to the web application.  -->
+  <filter-mapping>  
+      <filter-name>springSecurityFilterChain</filter-name>  
+      <!--  specifies that all incoming requests to the web application should be processed by the Spring Security filter chain. -->
+      <url-pattern>/*</url-pattern>  
+  </filter-mapping>  
+        
+  <!-- is used to specify the location of the Spring configuration files. -->
+  <context-param>  
+      <param-name>contextConfigLocation</param-name>  
+      <param-value>  
+          /WEB-INF/spring-dispatcher-servlet.xml  
+          /WEB-INF/spring-security.xml  
+      </param-value>  
+  </context-param>  
 </web-app>
